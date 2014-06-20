@@ -1,0 +1,21 @@
+language: node_js
+node_js: 0.10
+notifications:
+  email: false
+services: PostgreSQL
+env:
+  DATABASE_URL: postgres://postgres:@127.0.0.1/egress_test
+before_script:
+- sudo apt-get install python-software-properties=0.82.7.5 -m
+- sudo add-apt-repository ppa:chris-lea/node.js -y
+- npm install zombie
+- npm ls
+- psql -c 'create database egress_test;' -U postgres
+- psql -f databases/users.sql -U postgres -d egress_test
+deploy:
+  provider: heroku
+  api_key:
+    secure: KCuXYVBVFbHg0RaOi+cyHiIoRM2ofN5r8aHsXR5NS1k6ozGl0MB/3rTKOQS9GZQOJar1YNxjDI41S/M8RmWDwPTsTzBW/RQivTZhC4qJ3zxpwuLPkT+NqQUZY5pejfNsUNp44d5Rh1TTRQf36xWXFyvEKAZZX0xDSBUGiik/48g=
+  app:
+    master: egress-foundation
+    develop: egress-foundation-dev
