@@ -1,5 +1,5 @@
 language: node_js
-node_js: 0.10
+node_js: 0.1
 notifications:
   email: false
 services: PostgreSQL
@@ -15,7 +15,7 @@ before_script:
 deploy:
   provider: heroku
   api_key:
-    secure: KCuXYVBVFbHg0RaOi+cyHiIoRM2ofN5r8aHsXR5NS1k6ozGl0MB/3rTKOQS9GZQOJar1YNxjDI41S/M8RmWDwPTsTzBW/RQivTZhC4qJ3zxpwuLPkT+NqQUZY5pejfNsUNp44d5Rh1TTRQf36xWXFyvEKAZZX0xDSBUGiik/48g=
+    secure: JGIifppK0R7lw8uMAIlDQ4dQxU7a1o/XfOYGlEfWlYMcW6fOgdlgv5ogZqMsuV7xtQRr4xgSNsTU/Hwh8HG7yTmNBLvbRh+9bNuWuIQk2sETekaxhkIB1l+kRt7wt1eBwzqzIuTHLRD50dXRS2QT2RYAXPpzSjhsUF51WafZLsE=
   app:
     master: egress-foundation
     develop: egress-foundation-dev
