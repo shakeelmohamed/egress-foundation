@@ -1,6 +1,6 @@
 {
     "name": "egress-foundation",
-    "version": "0.1.1",
+    "version": "0.1.0",
     "description": "A minimal Express app template for a user account system, built with Zurb Foundation.",
     "main": "app.js",
     "dependencies": {
@@ -60,7 +60,7 @@
     "bugs": {
         "url": "https://github.com/shakeelmohamed/egress-foundation/issues"
     },
-    "engine": {
+    "engines": {
         "node": "0.10.x"
     }
 }
