@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Egress-foundation : Start writing a web app already, with Zurb&#39;s Foundation framework" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Egress-foundation</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/shakeelmohamed/egress-foundation">View on GitHub</a>
+
+          <h1 id="project_title">Egress-foundation</h1>
+          <h2 id="project_tagline">Start writing a web app already, with Zurb&#39;s Foundation framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/shakeelmohamed/egress-foundation/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/shakeelmohamed/egress-foundation/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="egress-foundation-start-writing-a-web-app-already" class="anchor" href="#egress-foundation-start-writing-a-web-app-already"><span class="octicon octicon-link"></span></a>egress-foundation: start writing a web app already.</h1>
+
+<p>egress-foundation is a minimal <a href="http://expressjs.com/">Express</a> app template for a user account system, built with Twitter's foundation.
+I built this with the intention of getting user-based node.js apps scaffolded out quickly.</p>
+
+<table>
+<tr>
+<th>Branch</th>
+        <th>Build Status</th>
+    </tr>
+<tr>
+<td>Master</td>
+        <td>
+            <img src="https://travis-ci.org/shakeelmohamed/egress-foundation.png?branch=master">
+</td>
+    </tr>
+<tr>
+<td>Develop</td>
+        <td>
+            <img src="https://travis-ci.org/shakeelmohamed/egress-foundation.png?branch=develop">
+</td>
+    </tr>
+</table><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ul>
+<li>The best way to use egress-foundation is by using the <a href="http://github.com/shakeelmohamed/generator-egress">Yeoman generator</a>
+</li>
+<li>This package was not meant to be installed through npm
+
+<ul>
+<li>But, you can run <code>npm install egress-foundation</code>, then copy the contents of the <code>node_modules/egress-foundation</code> folder to the root of your project directory and follow the steps below</li>
+<li>Or, you can clone this project in the root of your project directory by running <code>git clone git@github.com/shakeelmohamed/egress-foundation.git</code>
+</li>
+</ul>
+</li>
+<li>You don't need to declare this module as a dependency in your project's <code>package.json</code> file.</li>
+</ul><h2>
+<a name="current-problems-marked-with-a-todo" class="anchor" href="#current-problems-marked-with-a-todo"><span class="octicon octicon-link"></span></a>Current problems (marked with a TODO)</h2>
+
+<ul>
+<li>There is no significant input validation in place, I suggest using <a href="https://github.com/chriso/validator.js">validator.js</a> since it's already being used in the browser - located at <a href="public/js/validator.min.js">public/js/validator.min.js</a>.
+See the current validation in <a href="public/js/egress-validators.js">public/js/egress-validators.js</a>
+</li>
+</ul><h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started:</h3>
+
+<ol>
+<li>If it does not exist, create a <code>.env</code> file in the root directory of this project.</li>
+<li>
+<p>Your <code>.env</code> file should contain your PostgreSQL connection string in the following format, the <code>?ssl=true</code> query parameter is necessary only if your database connection requires SSL (Heroku's databases do) and will default to false if omitted:</p>
+
+<pre><code>DATABASE_URL=postgres://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;dbname&gt;?ssl=true
+</code></pre>
+
+<p>This will allow your application to connect to your database</p>
+</li>
+<li><p>Modify the <code>config</code> object in <code>config.js</code> to modify the application settings.</p></li>
+<li>Running <code>foreman start</code> will serve the application on the post listed in config.js (defaulting to 5000),
+and process the <code>DATABASE_URL</code> variable, locally. <em>Alternatively, running <code>node app.js</code> will do the same thing if you don't want to use foreman.</em>
+</li>
+</ol><h3>
+<a name="deploying-to-heroku" class="anchor" href="#deploying-to-heroku"><span class="octicon octicon-link"></span></a>Deploying to Heroku:</h3>
+
+<ol>
+<li>Authenticate via the Heroku command line, <code>heroku login</code>
+</li>
+<li>Set your environment variables on Heroku
+
+<ul>
+<li>If you've already setup your <code>.env</code> file as documented above, simply run <code>heroku config:push</code>
+</li>
+<li>Otherwise you can run the following command:
+<code>heroku config:set DATABASE_URL=postgres://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;dbname&gt;?ssl=true</code>
+Then run <code>heroku config:push</code>
+</li>
+</ul>
+</li>
+<li>Push your code up to your Heroku app</li>
+<li>You're done!</li>
+</ol><h2>
+<a name="modifying-site-content" class="anchor" href="#modifying-site-content"><span class="octicon octicon-link"></span></a>Modifying site content</h2>
+
+<ul>
+<li>The <code>jade</code> directory contains files for various markup files used to generate web pages.</li>
+<li>The <code>controllers</code> directory contains files for specific functionality for views, along with the files in <code>routes</code> for how they're invoked.</li>
+<li>Add additional frontend assets to the <code>public</code> directory, then reference them in the files found in <code>jade/includes</code>, particularly <code>head.jade</code> and <code>scripts.jade</code>
+</li>
+</ul><h2>
+<a name="running-the-tests" class="anchor" href="#running-the-tests"><span class="octicon octicon-link"></span></a>Running the tests</h2>
+
+<ul>
+<li>Make sure your environment is setup to run <a href="http://zombie.labnotes.org/#Infection">Zombie.js</a>
+</li>
+<li>With foreman
+
+<ul>
+<li>run <code>foreman run npm test</code> from the root directory of this repository</li>
+</ul>
+</li>
+<li>Without foreman
+
+<ul>
+<li>run <code>npm test</code>
+</li>
+</ul>
+</li>
+</ul><h2>
+<a name="validating-js-and-jade-files" class="anchor" href="#validating-js-and-jade-files"><span class="octicon octicon-link"></span></a>Validating JS and Jade files</h2>
+
+<ul>
+<li>Run <code>grunt</code>
+</li>
+</ul><h1>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h1>
+
+<ul>
+<li><a href="https://github.com/twbs/foundation/releases/tag/v3.1.1">foundation v3.1.1</a></li>
+<li><a href="http://www.postgresql.org/">PostgreSQL</a></li>
+<li>For other dependencies see <a href="package.json">package.json</a>
+</li>
+</ul><h1>
+<a name="issues" class="anchor" href="#issues"><span class="octicon octicon-link"></span></a>Issues</h1>
+
+<ul>
+<li>When in doubt, create an issue!</li>
+</ul><h1>
+<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h1>
+
+<p>You can most easily reach me on twitter <a href="http://twitter.com/_Shakeel">@_Shakeel</a></p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>This project is licensed under the terms of <a href="LICENSE">the MIT license</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Egress-foundation maintained by <a href="https://github.com/shakeelmohamed">shakeelmohamed</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
